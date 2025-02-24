@@ -72,5 +72,22 @@ class PosicaoAluno(models.Model):
 
 class Notas(models.Model):
   aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
-  materia = models.CharField(max_length=255)
+  materia = models.CharField(max_length=100)
+  global_nota = models.FloatField()
+  parcial1_nota = models.FloatField(null=True, blank=True)
+  parcial2_nota = models.FloatField(null=True, blank=True)
   
+  def __str__(self):
+     return f"{self.aluno.nome} - {self.materia}"
+   
+   
+class Falta(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    data = models.DateField(auto_now_add=True)
+    aula = models.CharField(max_length=100)
+    justificativa = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.aluno.nome} - {self.data} - {self.aula}"
+  
+
