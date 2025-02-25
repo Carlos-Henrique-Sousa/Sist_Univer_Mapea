@@ -91,3 +91,41 @@ class Falta(models.Model):
         return f"{self.aluno.nome} - {self.data} - {self.aula}"
   
 
+class EventoEscolar(models.Model):
+    escola = models.ForeignKey(Escola, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=100)
+    descricao = models.CharField(max_length=100)
+    data = models.DateField()
+    hora = models.TimeField()
+    local = models.CharField(max_length=255)
+    capa = models.ImageField(upload_to="evento_capa/", blank=True, null=True)
+    
+    def __str__(self):
+       return self.titulo
+   
+class ProfessorCurso(models.Model):
+    professor = models.OneToOneField(Professor, on_delete=models.CASCADE)
+    
+    def __str__(self):
+       return self.professor
+   
+class MaterialDeEstudo(models.Model):
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=255)
+    descricao = models.TextField()
+    arquivo = models.FileField(upload_to='materiais/', blank=True, null=True)  
+
+    def __str__(self):
+        return self.titulo
+
+class Atividade(models.Model):
+    professor = models.ForeignKey(ProfessorCurso, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=255)
+    descricao = models.TextField()
+    data_entrega = models.DateTimeField()
+
+    def __str__(self):
+        return self.titulo
+ 
