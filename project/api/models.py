@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Escola(models.Model):
-  cnpj = models.CharField(max_length=14, unique=True)
+  cnpj = models.CharField(max_length=16, unique=True)
   nome = models.CharField(max_length=255, unique=True)
   email = models.EmailField(unique=True)
   senha = models.CharField(max_length=255)
