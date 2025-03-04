@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
-    AppComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule  // Importar HttpClient para fazer requisições HTTP
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent] // O componente principal da aplicação
+  bootstrap: []
 })
 export class AppModule { }
