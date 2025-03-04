@@ -65,7 +65,6 @@ header {
 }
 
 .sidebar {
-    background: red;
     width: 5%;
     height: 50%;
     position: fixed;
@@ -79,27 +78,16 @@ header {
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
-    background-color: gray;
-    margin: 10px 0;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    display: none; /* Initially hidden */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.icon.active {
-    background-color: #ff6347;
-    display: block;
-}
-
-.indicator .dot {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    margin: 5px 0;
-    display: block;
-    gap: 25px;
+.icon:hover {
+    background: #444;
 }
 
 .Home-container {
