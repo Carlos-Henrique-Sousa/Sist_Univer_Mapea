@@ -1,0 +1,18 @@
+import pennylane as qml
+from pennylane import numpy as np
+
+dev = qml.device("default.qubit", wires=2)
+
+# Definição de um circuito Quântico
+@qml.qnode(dev)
+def QuantumCircuit(inputs):
+    qml.Hadamard(wires=0)
+    qml.RX(inputs[0], wires=0)
+    qml.RX(inputs[1], wires=1)
+    qml.CNOT(wires=[0, 1])  # Corrigido para a operação CNOT com dois qubits
+    return qml.expval(qml.PauliZ(0))
+
+inputs = np.array([0.5, 0.2])  # Agora o vetor tem 2 elementos, conforme esperado
+
+result = QuantumCircuit(inputs)
+print("Resultado do circuito Quântico:", result)

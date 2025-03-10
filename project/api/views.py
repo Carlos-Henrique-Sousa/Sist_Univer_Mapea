@@ -1,4 +1,7 @@
 from rest_framework import viewsets
+import subprocess
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import (
     Escola, Turma, Professor, PDT, Aluno, Mapeamento, PosicaoAluno,
     Notas, Falta, EventoEscolar, ProfessorCurso, MaterialDeEstudo, Atividade
@@ -61,3 +64,13 @@ class MaterialDeEstudoViewSet(viewsets.ModelViewSet):
 class AtividadeViewSet(viewsets.ModelViewSet):
     queryset = Atividade.objects.all()
     serializer_class = AtividadeSerializer
+    
+class QuantumOtmizationClass(APIView):
+    def post(self, request):
+        result = subprocess.run(
+            ['dotnet', 'run', '--project', 'QuantumML'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        output = result.stdout.decode('utf-8')
+        return Response({"Result":output})
