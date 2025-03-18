@@ -42,6 +42,7 @@ class Aluno(models.Model):
   turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
   dificuldade_visao = models.IntegerField(choices=[(0, "Normal"), (1, "Leve"), (2, "Moderada"), (3, "Severa")])
   media_humanas = models.FloatField()
+  media_exatas = models.FloatField()
   media_linguagens = models.FloatField()
   foto = models.ImageField(upload_to="alunos_fotos/", blank=True, null=True)
 
